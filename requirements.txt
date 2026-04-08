@@ -5,3 +5,4 @@ nltk
 streamlit
 fastapi
 uvicorn
+plotly
