@@ -1,25 +1,16 @@
-import nltk
-nltk.download('stopwords')
 import re
+import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 
-# Initialize
+# Download stopwords (important for Streamlit Cloud)
+nltk.download('stopwords')
+
 ps = PorterStemmer()
 stop_words = set(stopwords.words('english'))
 
 def preprocess(text):
-    # Remove special characters
     text = re.sub('[^a-zA-Z]', ' ', text)
-    
-    # Lowercase
-    text = text.lower()
-    
-    # Tokenize
-    words = text.split()
-    
-    # Remove stopwords + stemming
-    words = [ps.stem(word) for word in words if word not in stop_words]
-    
-    # Join back
-    return ' '.join(words)
+    text = text.lower().split()
+    text = [ps.stem(word) for word in text if word not in stop_words]
+    return ' '.join(text)
