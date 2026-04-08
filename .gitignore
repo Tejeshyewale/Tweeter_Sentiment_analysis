@@ -1,0 +1,6 @@
+models/
+*.csv
+*.sav
+*.pkl
+__pycache__/
+.vscode/
